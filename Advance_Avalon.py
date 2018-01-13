@@ -486,8 +486,9 @@ def main():
                         if "Oberon" in evil_roles_in_game:
                                 file.write("There is an Oberon lurking in the shadows.\n")
                         file.write("\nAbility: On any mission you are on, after the mission cards have been revealed, should the mission not result in a Fail (such as via a Reversal, requiring 2 fails, or other mechanics), you may formally declare as Agravaine to force the mission to Fail anyway.\n\n");
-                        file.write("Drawback: You may only play Fail cards while on missions.\n");
-
+                        file.write("Drawback: You may only play Fail cards while on missions.\n\n");
+                        file.write("Note: Ability to declare is only valid after the first quest and until 2 quests have failed\n")
+                        
         if "Maleagant" in evil_roles_in_game:
                 # write ability to Maleagant's file
                 player_name = reverse_assignments["Maleagant"]

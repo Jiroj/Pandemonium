@@ -31,7 +31,7 @@ def main():
         all_evil_roles_in_order = ["Mordred", "Morgana", "Maleagant", "Agravaine", "Colgrevance", "Oberon"]
 
         # assign the roles in the game
-        good_roles = ["Percival", "Merlin", "Galahad", "Tristan", "Iseult", "Uther", "Arthur", "Lancelot", "Guinevere", "Ygraine", "Gawain", "Titania"]
+        good_roles = ["Percival", "Merlin", "Tristan", "Iseult", "Arthur", "Lancelot", "Guinevere", "Gawain", "Titania"]
         evil_roles = ["Mordred", "Morgana", "Maleagant", "Agravaine", "Colgrevance", "Oberon"]
 
         # shuffle the roles

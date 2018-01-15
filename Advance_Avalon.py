@@ -341,8 +341,10 @@ def main():
                                         file.write(seen_role + "\n")
                         file.write("\n")
                         file.write("Ability: Proclamation\n")
-                        file.write("If two missions have failed, you may formally reveal that you are Arthur, establishing that you are Good for the remainder of the game. You may still propose and vote on missions, as well as be chosen to be part of a mission team, as per usual.\n")
-
+                        file.write("Once 2 quests have failed. You may formally decare yourself as ARthur and guaranteed good, you will no longer be a target for assasination\n")
+                        file.write("OR\n")
+                        file.write("In the event that evil wins by questing, you will select 4 players to execute. If you correctly name the entire evil team, Good wins the game.\n")
+                        
         if "Gawain" in good_roles_in_game:
 
                 # determine what Gawain sees
@@ -367,7 +369,7 @@ def main():
                         for seen_player in seen:
                                 file.write(seen_player + "\n")
                         file.write("\nAbility: Whenever a mission (other than the 1st) is sent, you may declare as Gawain to reveal a single person's played mission card. The mission card still affects the mission. (This ability functions identically to weak Inquisition and occurs after regular Inquisitions.) If the card you reveal is a Success, you are immediately 'Exiled' and may not go on missions for the remainder of the game, although you may still vote and propose missions.\n\n")
-                        file.write("You may use this ability once per mission as long as you are neither on the mission team nor 'Exiled'. You may choose to not use your ability on any round, even if you would be able to use it.\n");
+                        file.write("You may use this ability once per mission as long as you are not 'Exiled'. You may choose to not use your ability on any round, even if you would be able to use it.\n");
 
         stalked_good = None;
 

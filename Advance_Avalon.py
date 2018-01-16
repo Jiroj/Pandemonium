@@ -209,7 +209,6 @@ def main():
                         file.write("You are Lancelot. You are on the Good team. \n\n")
                         file.write("Ability: Reversal \n")
                         file.write("You are able to play Reversal cards while on missions. A Reversal card inverts the result of a mission; a mission that would have succeeded now fails and vice versa. \n \n")
-                        file.write("Note: In games with at least 7 players, a Reversal played on the 4th mission results in a failed mission if there is only one Fail card, and otherwise succeeds. Reversal does not interfere with Agravaine's ability to cause the mission to fail\n")
 
         if "Guinevere" in good_roles_in_game:
                 # guinevere sees two random "rumors"
@@ -452,7 +451,9 @@ def main():
                                         file.write(evil_player + " is a fellow member of the evil council.\n")
                         if "Oberon" in evil_roles_in_game:
                                 file.write("There is an Oberon lurking in the shadows.\n")
-
+                        if "Colgrevance" in evil_roles_in_game:
+                                file.write("Colgrevance is watching you.\n")
+                                
         if "Morgana" in evil_roles_in_game:
                 player_name = reverse_assignments["Morgana"]
                 filename = "game/" + player_name + ".txt"
@@ -463,6 +464,8 @@ def main():
                                         file.write(evil_player + " is a fellow member of the evil council.\n")
                         if "Oberon" in evil_roles_in_game:
                                 file.write("There is an Oberon lurking in the shadows.\n")
+                        if "Colgrevance" in evil_roles_in_game:
+                                file.write("Colgrevance is watching you.\n")
                         file.write("\nAbility: Once per game, when you would propose a mission team, you may declare as Morgana and permanently reverse mission order. The next proposal is granted to the person sitting next to the first proposer of the round. Morgana may NOT use this ablity if they have the last proposal of a round.\n");
 
         if "Oberon" in evil_roles_in_game:
@@ -476,7 +479,8 @@ def main():
                                 file.write("you have dosed the lovers with a potion of your own making. They both love you. Enjoy your mischief.\n\n")
                         else:
                                 file.write("Ability: Sleep. Once a game, after the first quest is complete you may Declare as Oberon to cause one player on an approved team to fall asleep and forget to quest.\n")
-
+                        if "Colgrevance" in evil_roles_in_game:
+                                file.write("Colgrevance is watching you.\n")
         if "Agravaine" in evil_roles_in_game:
                 player_name = reverse_assignments["Agravaine"]
                 filename = "game/" + player_name + ".txt"
@@ -487,6 +491,8 @@ def main():
                                         file.write(evil_player + " is a fellow member of the evil council.\n")
                         if "Oberon" in evil_roles_in_game:
                                 file.write("There is an Oberon lurking in the shadows.\n")
+                        if "Colgrevance" in evil_roles_in_game:
+                                file.write("Colgrevance is watching you.\n")
                         file.write("\nAbility: On any mission you are on, after the mission cards have been revealed, should the mission not result in a Fail (such as via a Reversal, requiring 2 fails, or other mechanics), you may formally declare as Agravaine to force the mission to Fail anyway.\n\n");
                         file.write("Drawback: You may only play Fail cards while on missions.\n\n");
                         file.write("Note: Ability to declare is only valid after the first quest and until 2 quests have failed\n")
@@ -502,6 +508,8 @@ def main():
                                         file.write(evil_player + " is a fellow member of the evil council.\n")
                         if "Oberon" in evil_roles_in_game:
                                 file.write("There is an Oberon lurking in the shadows.\n")
+                        if "Colgrevance" in evil_roles_in_game:
+                                file.write("Colgrevance is watching you.\n")
                         file.write("\nAbility: Reversal \n")
                         file.write("You are able to play Reversal cards while on missions. A Reversal card inverts the result of a mission; a mission that would have succeeded now fails and vice versa. \n \n")
                         file.write("Note: In games with at least 7 players, a Reversal played on the 4th mission results in a failed mission if there is only one Fail card, and otherwise succeeds. Reversal does not interfere with Agravaine's ability to cause the mission to fail.")

@@ -478,7 +478,7 @@ def main():
                         if "Tristan" in good_roles_in_game and "Iseult" in good_roles_in_game:
                                 file.write("you have dosed the lovers with a potion of your own making. They both love you. Enjoy your mischief.\n\n")
                         else:
-                                file.write("Ability: Sleep. Once a game, after the first quest is complete you may Declare as Oberon to cause one player on an approved team to fall asleep and forget to quest.\n")
+                                file.write("Ability: You may, onece in the game after the first quest is complete, declare yourself in order to block the next team leader from making a team. The proposal will go to the next player in the list.\n")
                         if "Colgrevance" in evil_roles_in_game:
                                 file.write("Colgrevance is watching you.\n")
         if "Agravaine" in evil_roles_in_game:

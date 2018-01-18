@@ -425,11 +425,12 @@ def main():
                 if "Colgrevance" in evil_roles_in_game:
                   with open(filename, "w") as file:
                     file.write("You are Titania. You are on the Good team.\n")
-                    file.write("\nyou have left your changeling in the court of Colgrevance. Enjoy your Mischief.\n\n")
+                    file.write("\nyou have left your changeling in the court of Colgrevance. Enjoy your mischief.\n\n")
                 else:
                   with open(filename, "w") as file:
                     file.write("You are Titania. You are on the Good team.\n")
-                    file.write("\nAbility: Sleep. Once a game, after the first quest is complete you may Declare as Titania to cause one player on an approved team to fall asleep and forget to quest.\n\n")
+                    file.write("\nAbility: Sleep. Once a game, after the first quest is complete you may Declare as Titania to cause one player on an approved team to fall asleep and forget to quest.\n")
+                    file.write("Note: You must act prior to the member actually questing, if planning to use your ability declare with a mod when you vote on the team.\n\n")
 
         # make list of evil players seen to other evil
         evil_players_no_oberon_or_colgrevance = list(set(evil_players))
@@ -479,6 +480,7 @@ def main():
                                 file.write("you have dosed the lovers with a potion of your own making. They both love you. Enjoy your mischief.\n\n")
                         else:
                                 file.write("Ability: You may, onece in the game after the first quest is complete, declare yourself in order to block the next team leader from making a team. The proposal will go to the next player in the list.\n")
+                                file.write("Note: Once team is made the ability may not be used, if planning to use the ability declare with the mod when you vote on the quest.\n")
                         if "Colgrevance" in evil_roles_in_game:
                                 file.write("Colgrevance is watching you.\n")
         if "Agravaine" in evil_roles_in_game:

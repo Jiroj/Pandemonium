@@ -340,7 +340,7 @@ def main():
                                         file.write(seen_role + "\n")
                         file.write("\n")
                         file.write("Ability: Proclamation\n")
-                        file.write("Once 2 quests have failed. You may formally decare yourself as ARthur and guaranteed good, you will no longer be a target for assasination\n")
+                        file.write("Once 2 quests have failed. You may formally decare yourself as Arthur and guaranteed good, you will no longer be a target for assasination\n")
                         file.write("OR\n")
                         file.write("In the event that evil wins by questing, you will select 4 players to execute. If you correctly name the entire evil team, Good wins the game.\n")
                         
@@ -425,7 +425,7 @@ def main():
                 if "Colgrevance" in evil_roles_in_game:
                   with open(filename, "w") as file:
                     file.write("You are Titania. You are on the Good team.\n")
-                    file.write("\nyou have left your changeling in the Court if Colgrevance. Enjoy your Mischief.\n\n")
+                    file.write("\nyou have left your changeling in the court of Colgrevance. Enjoy your Mischief.\n\n")
                 else:
                   with open(filename, "w") as file:
                     file.write("You are Titania. You are on the Good team.\n")
@@ -512,8 +512,7 @@ def main():
                                 file.write("Colgrevance is watching you.\n")
                         file.write("\nAbility: Reversal \n")
                         file.write("You are able to play Reversal cards while on missions. A Reversal card inverts the result of a mission; a mission that would have succeeded now fails and vice versa. \n \n")
-                        file.write("Note: In games with at least 7 players, a Reversal played on the 4th mission results in a failed mission if there is only one Fail card, and otherwise succeeds. Reversal does not interfere with Agravaine's ability to cause the mission to fail.")
-
+                        
         if "Colgrevance" in evil_roles_in_game:
                 player_name = reverse_assignments["Colgrevance"]
                 filename = "game/" + player_name + ".txt"

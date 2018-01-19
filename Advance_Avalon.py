@@ -238,8 +238,8 @@ def main():
                 if "Oberon" in evil_roles_in_game:
                         evil_players_no_obemord.remove(reverse_assignments["Oberon"])
 
-                if "Colgrevance" in evil_roles_in_game:
-                        evil_players_no_obemord.remove(reverse_assignments["Colgrevance"])
+                #if "Colgrevance" in evil_roles_in_game:
+                #        evil_players_no_obemord.remove(reverse_assignments["Colgrevance"])
 
                 # rumor generation here
                 for evil_player in evil_players_no_obemord:

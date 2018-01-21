@@ -466,8 +466,18 @@ def main():
                                 file.write("There is an Oberon lurking in the shadows.\n")
                         if "Colgrevance" in evil_roles_in_game:
                                 file.write("Colgrevance is watching you.\n")
-                        file.write("\nAbility: Once per game, when you would propose a mission team, you may declare as Morgana and permanently reverse mission order. The next proposal is granted to the person sitting next to the first proposer of the round. Morgana may NOT use this ablity if they have the last proposal of a round.\n");
 
+                        choice = random.choice(['1', '2', '3', '4'])
+
+                        if choice is '1':
+                                file.write("\nAbility: Flip. The next team is made by the person who appears last on the list, and will then proceed up the list towards the first team Leader.\n")
+                        elif choice is '2':
+                                file.write("\nAbility: Reverse. The next team is made by the player who led the last completed mission. Play proceeds in reverse order (back up the list towards the first team Leader).\n")
+                        elif choice is '3':
+                                file.write("\nAbility: Shuffle. A completely new leader order will be created randomly, the old list will no longer apply.\n")
+                        elif choice is '4':
+                                file.write("\nAbility: Morgana\'s choice. You will be allowed to choose to either Flip, Reverse or Shuffle player order.\n")
+                                
         if "Oberon" in evil_roles_in_game:
                 player_name = reverse_assignments["Oberon"]
                 filename = "game/" + player_name + ".txt"

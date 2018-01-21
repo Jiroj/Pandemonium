@@ -238,8 +238,8 @@ def main():
                 if "Oberon" in evil_roles_in_game:
                         evil_players_no_obemord.remove(reverse_assignments["Oberon"])
 
-                if "Colgrevance" in evil_roles_in_game:
-                        evil_players_no_obemord.remove(reverse_assignments["Colgrevance"])
+                #if "Colgrevance" in evil_roles_in_game:
+                #        evil_players_no_obemord.remove(reverse_assignments["Colgrevance"])
 
                 # rumor generation here
                 for evil_player in evil_players_no_obemord:
@@ -340,7 +340,7 @@ def main():
                                         file.write(seen_role + "\n")
                         file.write("\n")
                         file.write("Ability: Proclamation\n")
-                        file.write("Once 2 quests have failed. You may formally decare yourself as ARthur and guaranteed good, you will no longer be a target for assasination\n")
+                        file.write("Once 2 quests have failed. You may formally decare yourself as Arthur and guaranteed good, you will no longer be a target for assasination\n")
                         file.write("OR\n")
                         file.write("In the event that evil wins by questing, you will select 4 players to execute. If you correctly name the entire evil team, Good wins the game.\n")
                         
@@ -425,11 +425,12 @@ def main():
                 if "Colgrevance" in evil_roles_in_game:
                   with open(filename, "w") as file:
                     file.write("You are Titania. You are on the Good team.\n")
-                    file.write("\nyou have left your changeling in the Court if Colgrevance. Enjoy your Mischief.\n\n")
+                    file.write("\nyou have left your changeling in the court of Colgrevance. Enjoy your mischief.\n\n")
                 else:
                   with open(filename, "w") as file:
                     file.write("You are Titania. You are on the Good team.\n")
-                    file.write("\nAbility: Sleep. Once a game, after the first quest is complete you may Declare as Titania to cause one player on an approved team to fall asleep and forget to quest.\n\n")
+                    file.write("\nAbility: Sleep. Once a game, after the first quest is complete you may Declare as Titania to cause one player on an approved team to fall asleep and forget to quest.\n")
+                    file.write("Note: You must act prior to the member actually questing, if planning to use your ability declare with a mod when you vote on the team.\n\n")
 
         # make list of evil players seen to other evil
         evil_players_no_oberon_or_colgrevance = list(set(evil_players))
@@ -488,7 +489,8 @@ def main():
                         if "Tristan" in good_roles_in_game and "Iseult" in good_roles_in_game:
                                 file.write("you have dosed the lovers with a potion of your own making. They both love you. Enjoy your mischief.\n\n")
                         else:
-                                file.write("Ability: Sleep. Once a game, after the first quest is complete you may Declare as Oberon to cause one player on an approved team to fall asleep and forget to quest.\n")
+                                file.write("Ability: You may, onece in the game after the first quest is complete, declare yourself in order to block the next team leader from making a team. The proposal will go to the next player in the list.\n")
+                                file.write("Note: Once team is made the ability may not be used, if planning to use the ability declare with the mod when you vote on the quest.\n")
                         if "Colgrevance" in evil_roles_in_game:
                                 file.write("Colgrevance is watching you.\n")
         if "Agravaine" in evil_roles_in_game:
@@ -522,8 +524,7 @@ def main():
                                 file.write("Colgrevance is watching you.\n")
                         file.write("\nAbility: Reversal \n")
                         file.write("You are able to play Reversal cards while on missions. A Reversal card inverts the result of a mission; a mission that would have succeeded now fails and vice versa. \n \n")
-                        file.write("Note: In games with at least 7 players, a Reversal played on the 4th mission results in a failed mission if there is only one Fail card, and otherwise succeeds. Reversal does not interfere with Agravaine's ability to cause the mission to fail.")
-
+                        
         if "Colgrevance" in evil_roles_in_game:
                 player_name = reverse_assignments["Colgrevance"]
                 filename = "game/" + player_name + ".txt"

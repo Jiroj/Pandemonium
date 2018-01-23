@@ -547,6 +547,7 @@ def main():
                                                         file.write(evil_player + " is " + assignments[evil_player] + ".\n")
                                                         Colgrevance_Truth.append([evil_player, assignments[evil_player]])
                                                         counter += 1
+                                file.write("\nYour information may be corrupted by Titania\n")
                 else:
                         with open(filename, "w") as file:
                                 file.write("You are Colgrevance.\n")

@@ -29,6 +29,14 @@ def main():
 
         all_good_roles_in_order = ["Percival", "Merlin", "Galahad", "Tristan", "Iseult", "Uther", "Arthur", "Lancelot", "Guinevere", "Ygraine", "Gawain", "Titania"]
         all_evil_roles_in_order = ["Mordred", "Morgana", "Maleagant", "Agravaine", "Colgrevance", "Oberon"]
+        all_neutral_roles_in_order = ["Lady Of The Lake", "Pelinor", "Questing Beast"]
+        
+        print('')
+        print('Option 1 - Lock in LOTL')
+        print('')
+        print('Option 2 - Lock in Pelinor, QB and Merlin')
+        print('')
+        game_choice = input('Which option would you like to run? (1-2): ')
 
         # assign the roles in the game
         good_roles = ["Percival", "Merlin", "Tristan", "Iseult", "Arthur", "Lancelot", "Guinevere", "Gawain", "Titania"]
@@ -39,33 +47,67 @@ def main():
         random.shuffle(evil_roles)
 
         # determine the number of roles in the game
-        if num_players == 10:
+        if game_choice is '1':
                 num_evil = 4
-                num_good = 6
-        elif num_players == 9:
-                num_evil  = 3
+                num_good = 5
+                num_neutral = 1
+                neutral_roles = ["Lady Of The Lake"]
+        elif game_choice is '2':
+                num_evil = 4
                 num_good = 4
-        elif num_players == 7 or num_players == 8:
-                num_evil = 3
-                num_good = num_players - num_evil
-        else: # 5 or 6
-                num_evil = 2
-                num_good = num_players - num_evil
+                num_neutral = 2
+                neutral_roles = ["Pelinor", "Questing Beast"]
 
         # assign players to teams
         assignments = {}
         reverse_assignments = {}
         good_roles_in_game = set()
         evil_roles_in_game = set()
+        neutral_roles_in_game = set()
         good_players = players[:num_good]
         evil_players = players[num_good:num_good + num_evil]
-
+        neutral_players = players[num_good + num_evil:num_good + num_evil + num_neutral]
+##############################################################
+## This is for testing the team division
+##        print('')
+##        print('')
+##        print('GOOD')
+##        for good_player in good_players:
+##                print(good_player)
+##        print('')
+##        print('')
+##        print('EVIL')
+##        for evil_player in evil_players:
+##                print(evil_player)
+##        print('')
+##        print('')
+##        print('NEUTRAL')
+##        for neutral_player in neutral_players:
+##                print(neutral_player)
+##############################################################
+        
         # assign good roles
-        for good_player in good_players:
-                player_role = good_roles.pop()
-                assignments[good_player] = player_role
-                reverse_assignments[player_role] = good_player
-                good_roles_in_game.add(player_role)
+        if game_choice is '2':
+                #need to make sure that Merlin is in play
+                Merlin_exist = 'n'
+                random.shuffle(good_players)
+                for good_player in good_players:
+                        if Merlin_exist is 'n':
+                                player_role = 'Merlin'
+                                Merlin_exist = 'y'
+                        else:
+                                player_role = good_roles.pop()
+                                if player_role is 'Merlin':
+                                        player_role = good_roles.pop()
+                        assignments[good_player] = player_role
+                        reverse_assignments[player_role] = good_player
+                        good_roles_in_game.add(player_role)
+        else:
+                for good_player in good_players:
+                        player_role = good_roles.pop()
+                        assignments[good_player] = player_role
+                        reverse_assignments[player_role] = good_player
+                        good_roles_in_game.add(player_role)
 
         # assign evil roles
         for evil_player in evil_players:
@@ -73,7 +115,14 @@ def main():
                 assignments[evil_player] = player_role
                 reverse_assignments[player_role] = evil_player
                 evil_roles_in_game.add(player_role)
-
+                
+        # assign neutral roles
+        for neutral_player in neutral_players:
+                player_role = neutral_roles.pop()
+                assignments[neutral_player] = player_role
+                reverse_assignments[player_role] = neutral_player
+                neutral_roles_in_game.add(player_role)
+                
         # lone tristan
         if ("Tristan" in good_roles_in_game and "Iseult" not in good_roles_in_game and num_players >= 7):
                 good_roles_in_game.remove("Tristan")
@@ -555,26 +604,47 @@ def main():
                                         if evil_player != player_name:
                                                 file.write(evil_player + " is " + assignments[evil_player] + ".\n")
 
-        # TODO: pelinor + questing beast
-        if num_players == 9:
-                # write pelinor's information
-                pelinor_filename = "game/" + pelinor + ".txt"
-                with open(pelinor_filename, "w") as file:
-                        file.write("You are Pelinor.\n\n")
-                        file.write("You win if one of the following conditions are met:\n")
-                        file.write("[1]: No Questing Beast Was Here cards are played.\n")
-                        file.write("[2]: You are on a mission where a Questing Beast Was Here Card is played, and three missions succeed.\n")
-                        file.write("[3]: If neither of the previous two conditions are met at the end of the game, you declare as Pelinor prior to Assassination and name the person you believe to be the Questing Beast. You are told if you are correct at the conclusion of any other post-game phases. If you are correct, you win.\n")
+        # Write Neutral roles information
 
-                questing_beast_filename = "game/" + questing_beast + ".txt"
-                with open(questing_beast_filename, "w") as file:
-                        file.write("You are the Questing Beast.\n")
-                        file.write("You must play the 'Questing Beast Was Here' card on missions. Once per game, you can play a Success card instead of a Questing Beast Was Here card.\n\n")
-                        file.write("You win if all of the following conditions are met:\n")
-                        file.write("[1]: You play at least one Questing Beast Was Here card.\n")
-                        file.write("[2]: Either a) Pelinor is never on a mission where a Questing Beast Was Here card is played; or b) 3 Quests fail.\n\n")
-                        file.write("[3]: Pelinor fails to identify you after the conclusion of the game.\n\n")
-                        file.write(pelinor + " is Pelinor.\n")
+        # Write Lady Of The Lake's information
+
+        if "Lady Of The Lake" in neutral_roles_in_game:
+                player_name = reverse_assignments["Lady Of The Lake"]
+                filename = "game/" + player_name + ".txt"
+                with open(filename, "w") as file:
+                        file.write("You are the Lady Of The Lake.\n\n")
+                        file.write("You can win the game only by withholding your power and saving it for yourself.\n")
+                        file.write("If chosen to quest you must \"EXCALIBUR\" with the exception of the first quest where you may succeed.\n")
+                        file.write("Avoid questing at all costs! If you lose Excalibur you will surely die.")
+                
+        # write pelinor's information
+        Pelinor_player_name = ""
+        if "Pelinor" in neutral_roles_in_game:
+                Pelinor_player_name = reverse_assignments["Pelinor"]
+                filename = "game/" + Pelinor_player_name + ".txt"
+                with open(filename, "w") as file:
+                        file.write("You are Pelinor.\n\n")
+                        file.write("You win if:\n")
+                        file.write("1) There are no Questing Beast cards played at any point in the game.\n")
+                        file.write("2) You are on a Quest where a Questing Beast card is also played, And 3 Quests succeed.\n")
+                        file.write("3) In the case that the only \"Questing Beast Was Here\" card was played on the final Quest of the game. You may declare prior to end game in order to attempt to identify the beast.\n\n")
+                        file.write("Declaration and your guess happen prior to assasination and revelation of evil roles.\n")
+                        file.write("After end game, the Questing Beast will reveal, you win if you guessed correctly.\n")
+
+        # write Questing Beast information
+        if "Questing Beast" in neutral_roles_in_game:
+                player_name = reverse_assignments["Questing Beast"]
+                filename = "game/" + player_name + ".txt"
+                with open(filename, "w") as file:
+                        file.write("You are the Questing Beast.\n\n")
+                        file.write(Pelinor_player_name + " is Pelinor.\n")
+                        file.write("When questing, you must choose \"QUESTING BEAST WAS HERE\".\n")
+                        file.write("Once per game (and only once) you may choose success to evade Pelinor.\n\n")
+                        file.write("You win the game if:\n")
+                        file.write("1) At least one Questing Beast Card is played at any point in the game.\n")
+                        file.write("2) Either a) Pelinor is never on a mission where a Questing Beast card is played; or b) 3 Quests fail.\n")
+                        file.write("3) Pelinor fails to identify you at the end of the game.\n")
+                        
         # hijack
         bonus_ability_hijack = 0
         if (num_players >= 7):
@@ -619,6 +689,13 @@ def main():
 
                 file.write("\n\nEVIL TEAM:\n")
                 for role in all_evil_roles_in_order:
+                        if role in reverse_assignments:
+                                file.write(reverse_assignments[role] + " -> " + role + "\n")
+                if game_choice is '1':
+                        file.write("\n\nNEUTRAL PLAYER:\n")
+                elif game_choice is '2':
+                        file.write("\n\nNEUTRAL PLAYERS:\n")
+                for role in all_neutral_roles_in_order:
                         if role in reverse_assignments:
                                 file.write(reverse_assignments[role] + " -> " + role + "\n")
 

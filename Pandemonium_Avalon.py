@@ -36,7 +36,9 @@ def main():
         print('')
         print('Option 2 - Lock in Pelinor, QB and Merlin')
         print('')
-        game_choice = input('Which option would you like to run? (1-2): ')
+        print('Option 3 - Surprise me')
+        print('')
+        game_choice = input('Which option would you like to run? (1-3): ')
 
         # assign the roles in the game
         good_roles = ["Percival", "Merlin", "Tristan", "Iseult", "Arthur", "Lancelot", "Guinevere", "Gawain", "Titania"]
@@ -57,7 +59,19 @@ def main():
                 num_good = 4
                 num_neutral = 2
                 neutral_roles = ["Pelinor", "Questing Beast"]
-
+        elif game_choice is '3':
+                game_choice = random.choice(['1','2'])
+                if game_choice is '1':
+                        num_evil = 4
+                        num_good = 5
+                        num_neutral = 1
+                        neutral_roles = ["Lady Of The Lake"]
+                elif game_choice is '2':
+                        num_evil = 4
+                        num_good = 4
+                        num_neutral = 2
+                        neutral_roles = ["Pelinor", "Questing Beast"]
+                
         # assign players to teams
         assignments = {}
         reverse_assignments = {}
